@@ -1,0 +1,361 @@
+==Introduction==
+
+MyPluginGUI is starter code that enables users to quickly create gui applications to run when using RTXI. It is designed for user customization of events that are triggered by two built-in buttons. In the base, unaltered code, the built-in buttons have no function. Rather, function is assigned by the user. See the [[Add a Button]] tutorial for details. 
+
+This tutorial is a line-by-line, detailed explanation of MyPluginGUI. The reader is assumed to have at least a limited background in programming to easily understand the entirety of this document. If you find explanations to be convoluted or in other ways inadequate, please contact us at <info@rtxi.org>. 
+
+
+{| class="wikitable sortable"
+!&nbsp;!!&nbsp;!!&nbsp;!!&nbsp;!!&nbsp;
+|- id="Table_row_1" align="right"
+|<small>1</small>||<small>Andorra</small>||<small>85,000</small>||<small>3,316</small>|| bgcolor=white|&nbsp;&nbsp;3.90
+|- id="Table_row_2" align="right"
+|<small>2</small>||<small>Luxembourg</small>||<small>498,000</small>||<small>14,228</small>|| bgcolor="#F0F0F0"|&nbsp;&nbsp;2.86
+|- id="Table_row_3" align="right"
+|<small>3</small>||<small>France</small>||<small>64,768,000</small>||<small>1,827,517</small>|| bgcolor="#F0F0F0"|&nbsp;&nbsp;2.82
+|- id="Table_row_4" align="right"
+|<small>4</small>||<small>Belgium</small>||<small>10,423,000</small>||<small>292,530</small>|| bgcolor="#F0F0F0"|&nbsp;&nbsp;2.81
+|- id="Table_row_5" align="right"
+|<small>5</small>||<small>Iceland</small>||<small>309,000</small>||<small>7,667</small>|| bgcolor="#E9E9E9"|2.48
+|- id="Table_row_6" align="right"
+|<small>6</small>||<small>Switzerland</small>||<small>7,623,000</small>||<small>182,814</small>|| bgcolor="#E9E9E9"|2.40
+|- id="Table_row_7" align="right"
+|<small>7</small>||<small>Malta</small>||<small>407,000</small>||<small>9,129</small>|| bgcolor="#D5D5D5"|2.24
+|- id="Table_row_8" align="right"
+|<small>8</small>||<small>Austria</small>||<small>8,214,000</small>||<small>167,132</small>|| bgcolor="#D5D5D5"|2.03
+|- id="Table_row_9" align="right"
+|<small>9</small>||<small>Liechtenstein</small>||<small>36,000</small>||<small>718</small>|| bgcolor="#B4B4B4"|1.99
+|- id="Table_row_10" align="right"
+|<small>10</small>||<small>Spain</small>||<small>46,506,000</small>||<small>810,680</small>|| bgcolor="#B4B4B4"|1.74
+|- id="Table_row_11" align="right"
+|<small>11</small>||<small>Slovenia</small>||<small>2,003,000</small>||<small>27,780</small>|| bgcolor="#B4B4B4"|1.39
+|- id="Table_row_12" align="right"
+|<small>12</small>||<small>Sweden</small>||<small>9,074,000</small>||<small>125,248</small>|| bgcolor="#B4B4B4"|1.38
+|- id="Table_row_13" align="right"
+|<small>13</small>||<small>Germany</small>||<small>81,644,000</small>||<small>1,082,972</small>|| bgcolor="#8B8B8B"|1.33
+|- id="Table_row_14" align="right"
+|<small>14</small>||<small>Italy</small>||<small>60,749,000</small>||<small>796,634</small>|| bgcolor="#8B8B8B"|1.31
+|- id="Table_row_15" align="right"
+|<small>15</small>||<small>Ireland</small>||<small>4,623,000</small>||<small>58,504</small>|| bgcolor="#8B8B8B"|1.27
+|- id="Table_row_16" align="right"
+|<small>16</small>||<small>United&nbsp;Kingdom</small>||<small>62,348,000</small>||<small>781,025</small>|| bgcolor="#8B8B8B"|1.25
+|- id="Table_row_17" align="right"
+|<small>17</small>||<small>Portugal</small>||<small>10,736,000</small>||<small>132,219</small>|| bgcolor="#8B8B8B"|1.23
+|- id="Table_row_18" align="right"
+|<small>18</small>||<small>Netherlands</small>||<small>16,574,000</small>||<small>191,608</small>|| bgcolor="#8B8B8B"|1.16
+|- id="Table_row_19" align="right"
+|<small>19</small>||<small>Romania</small>||<small>21,959,000</small>||<small>211,867</small>|| bgcolor="#8B8B8B"|0.96
+|- id="Table_row_20" align="right"
+|<small>20</small>||<small>Norway</small>||<small>4,676,000</small>||<small>36,483</small>|| bgcolor="#676767"|0.78
+|- id="Table_row_21" align="right"
+|<small>21</small>||<small>Denmark</small>||<small>5,516,000</small>||<small>41,377</small>|| bgcolor="#676767"|0.75
+|- id="Table_row_22" align="right"
+|<small>22</small>||<small>Bulgaria</small>||<small>7,149,000</small>||<small>52,296</small>|| bgcolor="#676767"|0.73
+|- id="Table_row_23" align="right"
+|<small>23</small>||<small>Greece</small>||<small>10,750,000</small>||<small>78,874</small>|| bgcolor="#676767"|0.73
+|- id="Table_row_24" align="right"
+|<small>24</small>||<small>Latvia</small>||<small>2,218,000</small>||<small>14,967</small>|| bgcolor="#676767"|0.67
+|- id="Table_row_25" align="right"
+|<small>25</small>||<small>Estonia</small>||<small>1,291,000</small>||<small>8,535</small>|| bgcolor="#676767"|0.66
+|- id="Table_row_26" align="right"
+|<small>26</small>||<small>Croatia</small>||<small>4,487,000</small>||<small>28,950</small>|| bgcolor="#676767"|0.65
+|- id="Table_row_27" align="right"
+|<small>27</small>||<small>Lithuania</small>||<small>3,545,000</small>||<small>21,721</small>|| bgcolor="#676767"|0.61
+|- id="Table_row_28" align="right"
+|<small>28</small>||<small>Finland</small>||<small>5,255,000</small>||<small>28,836</small>|| bgcolor="#676767"|0.55
+|- id="Table_row_29" align="right"
+|<small>29</small>||<small>Hungary</small>||<small>9,992,000</small>||<small>51,684</small>|| bgcolor="#676767"|0.52
+|- id="Table_row_30" align="right"
+|<small>30</small>||<small>Poland</small>||<small>38,464,000</small>||<small>162,643</small>|| bgcolor="#676767"|0.42
+|- id="Table_row_31" align="right"
+|<small>31</small>||<small>Slovakia</small>||<small>5,470,000</small>||<small>22,588</small>|| bgcolor="#676767"|0.41
+|- id="Table_row_32" align="right"
+|<small>32</small>||<small>Czech&nbsp;Republic</small>||<small>10,202,000</small>||<small>39,358</small>|| bgcolor="#676767"|0.39
+|- id="Table_row_33" align="right"
+|<small>33</small>||<small>Macedonia</small>||<small>2,072,000</small>||<small>3847</small>|| bgcolor="#414141"|0.19
+|- id="Table_row_34" align="right"
+|<small>34</small>||<small>Bosnia&nbsp;and&nbsp;Herz.</small>||<small>4,622,000</small>||<small>8,436</small>|| bgcolor="#414141"|0.18
+|- id="Table_row_35" align="right"
+|<small>35</small>||<small>Serbia</small>||<small>7,345,000</small>||<small>12,369</small>|| bgcolor="#414141"|0.17
+|- id="Table_row_36" align="right"
+|<small>36</small>||<small>Montenegro</small>||<small>667,000</small>||<small>1,101</small>|| bgcolor="#414141"|0.17
+|- id="Table_row_37" align="right"
+|<small>37</small>||<small>Albania</small>||<small>2,987,000</small>||<small>3,300</small>|| bgcolor="#414141"|0.11
+|- id="Table_row_38" align="right"
+|<small>38</small>||<small>Moldova</small>||<small>3,732,000</small>||<small>2,134</small>|| bgcolor="#1E1E1E"|<font color="#E9E9E9">0.06</font>
+|- id="Table_row_39" align="right"
+|<small>39</small>||<small>Russia</small>||<small>139,390,000</small>||<small>62,932</small>|| bgcolor="#1E1E1E"|<font color="#E9E9E9">0.05</font>
+|- id="Table_row_40" align="right"
+|<small>40</small>||<small>Belarus</small>||<small>9,613,000</small>||<small>2,643</small>|| bgcolor="#1E1E1E"|<font color="#E9E9E9">0.03</font>
+|- id="Table_row_41" align="right"
+|<small>41</small>||<small>Ukraine</small>||<small>45,416,000</small>||<small>13,002</small>|| bgcolor="#1E1E1E"|<font color="#E9E9E9">0.03</font>
+|-
+|<font color=white>99</font>|| || ||
+|-
+|<font color=white>99</font>|| || ||
+|-
+|<font color=white>99</font>|| || ||
+|-
+|<font color=white>99</font>|| || ||
+|-
+|<font color=white>99</font>|| || ||
+|-
+|<font color=white>99</font>|| || ||
+|-
+|<font color=white>99</font>|| || ||
+|-
+|<font color=white>99</font>|| || ||
+|-
+|<font color=white>99</font>|| || ||
+|-
+|<font color=white>99</font>|| || ||
+|-
+|<font color=white>99</font>|| || ||
+|-
+|<font color=white>99</font>|| || ||
+|-
+|<font color=white>99</font>|| || ||
+|-
+|<font color=white>99</font>|| || ||
+|-
+|<font color=white>99</font>|| || ||
+|-
+|<font color=white>99</font>|| || ||
+|-
+|<font color=white>99</font>|| || ||
+|-
+|<font color=white>99</font>|| || ||
+|}
+|}
+|}
+
+
+
+==Header file==
+
+6: MyPluginGUI inherits from DefaultGUIModel, adding functions and overriding a few others. DefaultGUIModel is on its own a mechanism by which users can create their own plugins. MyPluginGUI simply obscures some of the more arcane functions and provides a more simplified programming experience. 
+
+8: This is the beginning of the MyPluginGUI class definition. 
+
+11: Q_OBJECT is a Qt-specific macro used to insert code that is implements the signals and slots methods used for communication between different QObjects. QObjects are a basic class from which other Qt classes are derived. Basically, the Q_OBJECT macro indicates that the class is to be treated as a QObject. 
+
+31-33: Theses vairables are not implemented in the code, but are there for users to use should they need to have a variable to store some parameter or state. Period refers to the rate of data acquisition, so "period" would be used if some user-made function utilized that information. These variables are entirely optional, and if desired, can be disregarded. 
+
+35: "private slots:" is different from "private:". It is a Qt-specific definition for accessibility that applies solely to functions, variables, etc. that are to be connected to objects, events, etc. through the Qt API. 
+
+40-43: For MyPluginGUI, there are two default functions. In the source file, they are connected to buttons so that when a user pushes a button in the GUI, one of the functions here is called. Any additional functions a user makes would have to be declared here for it to function properly through the Qt API. 
+
+<!--
+####Source file:
+
+6 Include the header file described previously. 
+???????????????7 <main_window.h> 
+8 <qgridview.h> is used to orient objects in a grid structure. The functions in this package essentially allow users to define a grid to use to orient different widgets. 
+9 <qhbox.h> is a class that creates QHBox objects that orgainize child widgets in a horizontal row.
+10 <qhbuttongroup.h> works similarly to <qhbox.h> except that it is intended to contain buttons, which are themselves definined in another Qt package.
+11 <qlabel.h> contains functions that enable users to embed text into a GUI. 
+12 <qlayout.h> has functions that allows customization of where buttons, windows, etc. are located
+13 <qpushbutton.h> is a class that creates buttons in the GUI that are animated to be depressed/pushed down when clicked. 
+14 <qtimer.h> contains functions that can be used for benchmarking purposes. It's used within default_gui_model to time screen refreshing.
+15 <qtooltip.h> allows users to add tooltips to QObjects and their derivatives. (Tooltips are messages that are displayed when a mouse hovers over something. In many GUIs, for example, hovering the mouse over something like 'Open' or 'Save' will cause a small message to appear explaining what the option over which the mouse hovers does. Those messages are tooltips.)
+16 <qvalidator.h> checks for values entered into widgets to ensure they match the underlying specifications.
+17 <qvbox.h> operates identically to <qhbox> except that this class orients child widgets in a vertical column. 
+18 <qwhatsthis.h> provides help text and informations to users about different widgets when the code is run.
+
+20 extern "C" is implemented to prevent name-mangling by the C++ compiler. Normally, C++ uses name-mangling to allow many different definitions of an object with a same name. In other words, object names can be overloaded. Because this is a module, RTXI needs to load the dynamically-allocated module in memory. If the name gets mangled by the C++ compiler, then RTXI has to look for whatever that name was mangled into; however, RTXI cannot do this, meaning that it will be unable to find any name-mangled module. Therefore, we use extern "C". 
+
+26 vars is an array that contains instances of the variable_t struct, which is definied in DefaultGUIModel. vars is used to pass the variables to be handled within MyPluginGUI to the class's constructor. In the base code, there are two variables whose labels are respectively "GUI label" and "A State". Each is separately instantiated within the vars array, and the instantiations all contain three elements: a GUI label, a tooltip description (the message that appears when the mouse hovers over the label), and the variable's type. 
+
+Each element added to the vars[] array must have at least three components:
+ A) string name - the label for the variable made visible in the GUI
+ B) string description - tooltip description displayed when the mouse hovers over the label
+ C) flags_t flags - the type for the variable, such as STATE, PARAMETER, INPUT, OUTPUT, COMMENT, etc. 
+
+Note that the strings are of type std::string. Qt has it's own string implemenetation, so take care to not confuse ordinary C strings with them. Also note that the flags_t type is defined in io.h. It is an unsigned long int used within RTXI for input and output processing. Simply put, it is a method RTXI uses to define diffent types for variables that represent different components of a GUI. 
+
+Additional information about the type parameter can be added by using the | operator. Note that | here represents a bitwise OR operator. An explanation for the method and, perhaps more importantly, the rationale for this is best left for later, on line 157. What this additional information does is apply a data type to a variable within vars. In the base code for "GUI label", the variable is of type PARAMETER, and " | DOUBLE" means that the variable is type DOUBLE and stores 8-byte floating point numbers. If we wanted integers, we would use INTEGER instead of DOUBLE. Also, note that the types are not native data types but instead are types defined within DefaultGUIModel, which is highlighted by their names being in all-caps. That is why the DefaultGUIModel:: prefix must be appended. 
+
+32 The GUI is made partly by iterating through all the elements of vars and appending a widget to the GUI window for each one. Because the vars array does not have a native count of the number of elements within, we create a variable called num_vars that stores that number. 
+
+The size of the elements within are contingent on their types, so the variable_t type is used within the sizeof() command. Because the count of variables cannot change after the module is compiled and run within RTXI, it num_vars is declared as static, meaning that it cannot be changed from within the program after it is initialized.
+
+CONSTRUCTOR 34
+34 This is the constructor for MyPluginGUI. It is called whenever the module is opened within RTXI, and it creates an instance of the class called MyPluginGUI. Because the constructor is being declared outside the header file (my_plugin_gui.h), the MyPluginGUI:: prefix must be added so that the compiler knows that the function is a member of the MyPluginGUI class. This also applies to any other functions that are implemented by the MyPluginGUI class. 
+
+*
+Just in case anything is unclear, my_plugin_gui.cpp is a c++ file that contains definitions for all the functions in the MyPluginGUI class. The structure and members of the class itself is specified in the header file, my_plugin_gui.h. It is conventional for files that contain class definitions to themselves be named after that class. The filename "my_plugin_gui.cpp" could be changed to anything as long as any dependencies are altered to reflect the changes.
+*
+
+" : DefaultGUIModel("MyPluginGUI with Custom GUI", ::vars, ::num_vars)" is added at the end because MyPluginGUI is a class derived from DefaultGUIModel. DefaultGUIModel contains the needed tools to implement a module for RTXI, and MyPluginGUI uses them. By default, when a base class constructor is called, the parent constructor is called as well, but without any arguments passed to it. For our purposes, we need to supply DefaultGUIModel() with the vars array and the num_vars variable. To pass them to the parent class, we use the syntax exemplified in the code. 
+
+38: QWhatsThis is used to add help information to a module accessible from the help menu in RTXI. add() simply adds the text to the MyPluginGUI object. 
+
+39: The createGUI function is defined on line 87 and will be explained later. 
+
+40: The update function is defined on line 55.
+
+41: the refresh function is defined within DefaultGUIModel. Suffice it to say that it refreshes values in the GUI as they are changed. 
+
+END CONSTRUCTOR
+
+44: This is the destructor. Whenever an object is created, space for it is allocated in memory. When the object is no longer needed, it is deleted from memory by the destructor, freeing the space it occupied for use. For classes that are derived from another, the class constructor is called, and then the parent destructor is called. MyPluginGUI allocates memory through tools implemented by DefaultGUIModel, so it does not need to free any space itself. Therefore, its destructor is left blank, and the memory-freeing process is left entirely to DefaultGUIModel. 
+
+Should a user, for instance, implement an additional window within MyPluginGUI, it would have to be unallocated by the MyPluginGUI destructor. If not, the space used up for storing information regarding the extra window would remain forever off-limits while RTXI is running. This loss of space is called a memory leak, and if enough space is lost in this manner, the program will crash. 
+
+49: execute is used when MyPluginGUI needs to modify data within RTXI. The real-time system takes samples at a certain rate, and with each period it calls the execute function. This enables users to alter real-time data, and with the use of INPUT and OUTPUT parameters in the vars array, they process and produce real-time signals. Functions that do this can be defined outside the execute function as long as they are called within it.
+
+The execute function does not have any definition to begin with. When called, it immediately returns nothing back to whatever called it. The user is free to add functionality to it. 
+
+55: The update function is the mechanism by which the GUI buttons and any displayed values are modified. Whenever the system detects an event in the GUI, such as a value changing or a user pushing a button, it puts up a flag, coincidentally called "flag", with a type associated with the change that occurred. 
+
+The update function contains a switch structure, which is a logical tool implemented within C and many, many other languages. Essentially, switch statements function by operating on some sort of flag whose value determines some sort of response. For each possible value of the flag, the user can specify some sort of response. The responses are made by using:
+
+case SOME_VALUE:
+   ... desired response ...;
+   break;
+
+For undefined responses, the user can specify default behavior by using "default:" instead of "case SOME_VALUE:". 
+
+The base code contains five definied cases: INIT, MODIFY, UNPAUSE, PAUSE, PERIOD, and EXIT. 
+ A) INIT is used when the program is initialized. It is optional, and is called only on line 40.
+ B) MODIFY is used when a parameter in the GUI is changed by the user. In the base code, the "GUI label" parameter is displayed in the GUI as a label that says "GUI label" followed by a text box containin a floating point value that the user can modify by typing in a value. When a value is typed in, the MODIFY flag goes off, the update function is called, and the changed value is extracted, converted to std::double, and stored in some_parameter. 
+ C) UNPAUSE's function is, as one may easily guess, to indicate when the user hits the pause button on the GUI to unpause the module. 
+ D) PAUSE means the user paused the module. 
+ E) PERIOD is used when the period of the real-time system is altered. 
+ F) EXIT causes the module to close. 
+
+Again, these flags are specific to RTXI. The way they are implemented will not be explained here. 
+
+CREATE_GUI - This code is VERY representative of Qt3 and NOT Qt4 and higher. Boxes and windows are implemented very differently in Qt4. 
+
+86: This is the script that generates the actual GUI display. It is an overloaded instance of the createGUI function from DefaultGUIModel, meaning that the compiler ignores the way the createGUI function is implemented in the parent class DefaultGUIModel in lieu of the definition here in MyPluginGUI.
+
+90: setMinimumSize sets the minimum size in pixels for the window. This prevents the user from resizing the window to anything smaller than 200x300. 
+
+94: "layout" is a pointer of type QBoxLayout, and it points to a QHBoxLayout object. Because QHBoxLayout inherits from QBoxLayout, there is no error. Pointers in C++ can be of the base class and still point to derived classes. QHBoxLayout indicates the layout of things to be added to the window: a horizontally-oriented group. The "new" part of the line tells the compiler to allocate memory for the object, and the constructor only requires the pointer for the parent object. The module itself is the parent widget, so the keyword "this" is used. 
+
+The effect of this line is for the main window for MyPluginGUI to be subdivided into horizonal windows. Qt has been left to handle sizing and spacing under the hood. The following lines will add content to the horizontally-oriented subwindows. This will all be detailed as they occur in the code. 
+
+98: The base code is implemented so that leftlayout denotes the left side of "layout", the QHBoxLayout defined earlier. leftlayout is a pointer to a QVBoxLayout object, which basically orients inserted objects vertically. Another possible QVBoxLayout pointer one could define is rightlayout. It is not implemented or included here, so any definition of it is left to the user. The idea is for MyPluginGUI is to enable users to add whatever they want to the right part of the main window set by the pointer "layout" and display it as they see fit. In the lines below, we will create a few objects that will all be added to leftlayout.
+
+Note that "rightlayout" does not have to be named "rightlayout". It is simply called that here for conceptual symmetry. If s/he wants, a user can add several windows to the right of "leftlayout". 
+
+Also note that the only reason "leftlayout" is placed on the left is because it is added to "layout" first. Anything added to a layout is oriented in the order in which they are added. A horizontal layout adds things from left to right, and a vertical one orients things top to bottom. 
+
+102. A QHButtonGroup pointer called "bttnGroup" points to an object that will contain some buttons for one of the windows. As one may guess, it is a layout object that places buttons in a horizontal row. The QHButtonGroup contructor requires the name of the object and the parent widget. 
+
+105-106: This bit adds two buttons to the QHButtonGroup pointed to by "bttnGroup". These buttons are referenced by the pointers "aBttn" and "bBttn", and they are instances of QPushButton. QPushButton is a Qt-defined class that displays a button that is animated to get pushed down when a user clicks it. 
+
+111-112: connect() is a function used to implement Qt's signals and slots mechanism. It is basically how Qt objects talk to one another. They can emit a SIGNAL(), which can be references to numerical values, states of GUI buttons, clicks of menubar options, etc., that are triggered by an event and sent to another object's SLOT(), which allows the object to act on the signal sent by another. For example, suppose there is a QMenuBar object that has an option "Close". One can connect the signal sent when a use clicks on the "Close" option to the exec() or quit() function of the parent object, closing the entire window and all its components. 
+
+"SIGNAL" and "SLOT" are Qt-defined macros, as are the "Q_OBJECT", "signals", and "slots" words defined in the header file. A macro in generic C/C++ cases are identifiers that tell the preprocessor to replace the identifier with actual C++ code. The macros used in Qt are similar in that they represent identifiers that are replaced with actual code for the compiler to process, but they differ in that the replacement is not handled by the preprocessor. Rather, these macros are replaced by Qt's meta-object compiler, aka moc. The exact definitions of each macro can be found in the Qt source code in qtobjectdefs. Not much more detail will be provided here, but if curious, the link below leads to a thorough explanation of the process. Keep in mind that it refers to Qt5, but the meta-object compiler information is still applicable. 
+www.woboq.com/blog/how-qt-signals-slots-work.html
+
+Here, connect is used to connect the signal sent when a QPushButton is clicked to the function "aBttn_event", which is a member function of the MyPluginGUI class. The syntax for the connect function is as follows:
+
+QObject::connect(Pointer to object emitting signal, SIGNAL(the signal), pointer to receiving object, SLOT(response to signal))
+
+It should be noted that the arguments to SIGNAL and SLOT here are member functions of the objects to which their respective pointers point. 
+
+115: This the creation of a QHBox called "utilityBox" that will contain buttons that allow users to pause and close the module and tell it when a paramter is to be modified. 
+
+116: This QPushButton will be part of utilityBox. It is set to True when the module is loaded so that the module will start out paused, and it's connected to the pause() function that implements pausing for the module. This button can be toggled on or off, so toggled(bool) is used instead of clicked(). If clicked() were used, the module would only pause for however long it took to process the instant the button was clicked, and then the module would resume. 
+
+119: "Modify" is another button that allows the user to tell MyPluginGUI that a value has been changed. Whenever a user changes a parameter by typing it in, the change, though displayed in the GUI, will not be recorded in the program itself until the "Modify" button is pressed. The button returns a clicked() signal and connects it to the modify() function. 
+
+121: "Unload" closes the module and removes it from the RTXI workspace. Hence, clicking it triggers the exit() function. 
+
+125: "leftlayout", the child of "layout" which was defined earlier, is added to "bttnGroup". This is done through the addWidget function, which is a member of the QBoxLayout class, which adds a QWidget, the base class for QPushButton, to a QLayout. 
+
+NOTE: lines 129-135 are very specific to Qt3. The things they implement are done differently in Qt4, so keep that in mind if using RTXI v2.0 or greater. 
+
+129: "sv" is a pointer to a QScrollView object. QScrollView is a class that creates a scrollable area. What this means is that when the elements within the window exceed the size of the window, horizontal and/or vertical scrollbars appear that enable users to view all the content without resizing the elements contained in the window. 
+
+QScrollView has four children, the scollable window (i.e. the viewport), the horizontal scrollbar, the vertical scrollbar, and the central widget, which is a small element that connects the horizontal and vertical scrollbars at the corner where they meet. 
+
+Once defined, the dimensions for "sv" and its resizing policies can be set. The setResizePolicy() function specifies how the widget can resize itself. The option provided here, "AutoOneFit", makes the window fit any widget within as long as there is only one. If there are more, the options are not specified, and QScrollView reverts to default behavior. 
+
+Once the QScrollView is set, objects can be added to it, and it can be added to other objects, too.
+
+131: Here, "sv" is added to "leftlayout". Recall that "leftlayout" is a pointer to a QVBoxLayout, so the "sv" will be displayed below "utilityBox". 
+
+133: The window that contains the scrollable content in "sv" is its viewport. It can be called by the viewport() function, which returns the address of the viewport object. Here it is called and its return value stored in a QWidget object deigned to be named "viewport", for clarity. 
+
+134: In order for changes to "viewport"'s members to be reflected in "sv", the addChild function is called. addChild() is the function that adds things to a widget. It is similar to addLayout, but it only takes widgets as arguments. addLayout only take layouts. 
+
+135: QGridLayout is another type of QLayout. Unlike the two encountered previously, QVBoxLayout and QHBoxLayout, QGridLayout creates a grid with areas where widgets can be inserted. Each area is denoted by a set of coordinates, and it is possible for windows to occupy more than one area, making this layout an effective means of controlling and customizing displays. 
+
+QGridLayout's constructor takes the pointer to the parent widget, which in the case of "scrollLayout" is the pointer called "viewport". The second argument is the intial number of rows. The third is the initial number of columns. More rows and columns will be added to "scrollLayout" as they are appended to QGridLayout via the addWidget function. 
+
+137: The following parameters are counters for different data types contained in the vars[] array.
+ A) nstate = number of STATE variables
+ B) nparam = number of PARAMETER
+ C) nevent = number of EVENT
+ D) ncomment = number of COMMENT
+
+As each data type is not native to C++, the variables are declared as type size_t. size_t is a generic type that denotes the size of any object. 
+
+138: This for loop iterates over all the elements of the vars[] array and creates GUI objects to be stored in scrollLayout. 
+
+140: This if statement checks the elements of vars[] to see if certain criteria are met. If so, then the script enclosed in the curly brackets following the if statement will be executed. If not, then it is ignored. The first check The if statement also checks the elements of vars to see if they are types PARAMETER, STATE, EVENT, or COMMENT. Note that there is no search for types INPUT or OUTPUT. This means that any incoming or outgoing signals with other objects within RTXI connected to MyPluginGUI will not be displayed in the GUI itself. 
+
+142: param is an object of type param_t. param_t is a struct that contains five elements:
+ A) QLabel * label - the text string that appears as the name of the object in the GUI
+ B) DefaultGUILineEdit * edit - the text window object where users enter changes to parameters
+ C) IO::flags_t type - indicator for the data type of a variable, such as PARAMETER or STATE
+ D) size_t index - counter used to index the object based on how many of the same type have been counted
+ E) QString * str_value - stores the value of the object as a QString
+
+param_t is used for defining elements to be loaded into the GUI. Each element appears as a QLabel next to a DefaultGUILineEdit object. An explanation for the geometry is provided below.
+
+When the GUI is running, users are able to enter values into the DefaultGUILine edit window and change them. When such a change occurs, the new value is checked to see if it's a valid input. If so, it is then converted to a QString and stored in str_value. 
+
+144: This line assigns a QLabel to the label variable within param. The "." operator in "param.label" causes assignment to the "label" member of the param_t struct. The QLabel constructor takes as input either a QString or standard string followed by the pointer of the parent widget. As the window is being added to the viewable area of sv, the parent object is the QWidget "viewport". Regarding the first parameter, the string, remember that vars is an array of variable_t structs. Each struct has two strings and a flag as members. The name of a particular variable_t object is stored in name, so to get the name of all objects in vars, one uses vars[i].name, where i is the iterator that iterates from 0 to the length of the vars array. 
+
+145: The newly defined QLabel is now added to scrollLayout. The grid coordinate system for QGridLayout sets (0,0) as the top left corner, and the first number in the pair is the row and the second the column. Because labels are here intended to be on the left, param.label is placed at (0,0). The row coordinate is determined by parameter.size(). "parameter" is a vector defined in workspace.cpp that stores parameter_t structs, and vectors are C++ are arrays with changeable size. As the loop iterates, all the vars elements that pass the if check on line 140 will be stored in "parameter". Coordinates are set using the vector's size() member function. 
+
+Note that with the base code alone, the iterator itself could be used to set the coordinates for the widgets. Be aware, though, that if there were any variable_t structs whose flags member was INPUT or OUTPUT, they would not be added to the GUI because of the if statement on line
+
+140. That means that if INPUTs or OUTPUTs were present, the iterator cannot be used, as the length of the vars array will not match the number of variable_t elements that pass the if check on 140. 
+
+146: This line operates more or less the same as line 144. The difference is that the "edit" member of param is being filled with a DefaultGUILineEdit object. 
+
+147: The DefaultLineEdit object created in 146 is added to the grid. It's in the same row, but in the second column. 
+
+149-150: The tooltip description of each QLabel set to be the tooltip string in the "description" member of a variable_t struct. The add function that is called takes first the object to which the tooltip is to be applied and then the tooltip description string itself as arguments. The same tooltip is provided for the QLabel and the DefaultGUILineEdit objects. 
+
+152: This series of if statements is used to determine the type of variable being displayed and to execute the appropriate behavior. The first checks whether the "flags" member of an element of vars matches PARAMETER. 
+
+The PARAMETER, STATE, EVENT, etc. types are not actual data types but are hex numbers set in io.h, default_gui_model.h, and workspace.h. That is why the bitwise AND operator (&) is used and not something else, such as "==". The if statement checks whether the objects flag, which is a hex number, matches PARAMETER, another hex number, using a bitwise AND. Each possible label is a hex number with a single non-zero bit. The position of the non-zero bit corresponds to a given type. For example, 0x1 == INPUT and 0x2 == OUTPUT. For inputs of type PARAMETER, the addition of a type uses a bitwise OR that adds an additional non-zero bit that is unique to a given type, such as DOUBLE. The utility of this is demonstrated in line 154.
+
+154: If the object is of type PARAMETER, then this line and the following if statements are executed. The "flags" variable, which line 152 determined to be of type PARAMETER, is checked to see if it is a DOUBLE using a bitwise AND. As AND is a unique hex number, the returned value is non-zero only if the same bit is non-zero in flags. Recall that DOUBLE is set with a bitwise OR. If a nonzero value is returned, then the if block executes. If not, it is ignored. 
+
+156: param.edit is of type DefaultGUILineEdit, and the setValidator function is used to check whether any user input into the line editor is valid. Here, any double is a valid input, so a new QDoubleValidator object is attached to param.edit. 
+
+157: An addition step is added here to set the data type. It could be accomplished elsewhere, and it could also have been copied from vars[i].flags. 
+
+159-164: Performs the same checking method for an UINTEGER, which is meant to stand for unsigned integer. The minimum value for an unsigned integer is 0, and this is mimicked in Qt by using QIntValidator to ensure incoming values are integers, and then using setBottom(0) to set the minimum valid integer value to 0. 
+
+166-169: This check is for signed integers, so setBottom isn't needed. 
+
+172: If no data type is specified, then the parameter type defaults to just PARAMETER. This means that users can input anything in that variable's line editor. Strings, integers, floating point numbers, etc. are all accepted, and none are validated. 
+
+173-174: The parameter index is incremented up by 1, and the "str_value" member is set as an undefined QString. 
+
+176-181: This block checks whether a variable is a STATE. STATE variables are fixed at initiation so that users cannot change them when the module is running. The intitial value appears in a DefaultGUILineEdit box. setReadOnly(true) ensures that the value within the box, which is the value of the state, cannot be changed, and setPalleteForegroundColor(Qt::darkGrey) sets the color of the textbox to darker shade than the rest of the box. 
+
+??????????183-187: DefaultGUIModel's EVENT types are also read-only. They differ from STATEs in that changes to them are implemented once. After the first change, they are set like STATES.
+
+189-192: This final block checks whether the parameter is a comment. COMMENTs are, as of 1/15/14, unimplemented. They are intended to be notepads that appear when the module is run so that users can write notes that they can save to read and edit in different sessions. 
+
+??????????195: Once the if statements are executed, the param created at the beginning of the loop on line 142 is added to the parameter array. 
+
+202: This line adds the utilityBox widget, which contains the "Pause", "Modify", and "Unload" QPushButton widgets, to leftlayout. Recall that leftlayout is a QVBoxLayout, and utilityBox is the third thing that has been added to it, so the box containing the "Pause", "Modify", and "Unload" will be added to the bottom of the MyPluginGUI GUI. 
+
+207: Now, we add leftlayout to layout, the initial QHBoxLayout that represents the layout of the entire module. 
+
+210: By default, in Qt, any windows that are created are hidden unless the function show() is used. 
+
+214-217: This function, called aBttn_event, is left blank so that users can define it with whatever process is necessary. The function is called whenever aBttn, which is displayed in the GUI as a clickable button called "Button A", is clicked. 
+
+219-221: Same as aBttn_event, only that it is triggered when "Button B" is clicked. -->

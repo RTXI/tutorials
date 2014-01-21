@@ -2,7 +2,11 @@ This tutorial provides a guideline for adding buttons within an RTXI module. We 
 
 Before | After
 :-----:|:-----:
+<<<<<<< HEAD
 [[/images/add_a_button/1_module_before.png]] | [[/images/add_a_button/2_module_after.png]]
+=======
+![Before][figure 1] | ![After][figure 2]
+>>>>>>> 415e325c2f7e85114736e73a150b337e8c1ec591
 
 Before we begin, please make sure that your RTXI installation is less than version 2.0. Versions 2.0 and above rely on Qt4. This tutorial utilizes code that is compatible with Qt3 libraries and should not be expected to provide error-free code if used as a starting point for plugins written for Qt4. 
 
@@ -23,7 +27,11 @@ Before we begin, please make sure that your RTXI installation is less than versi
 
 Before | After
 :-----:|:-----:
+<<<<<<< HEAD
 [[/images/add_a_button/3_makefile_before_sed.png]] | [[/images/add_a_button/4_makefile_after_sed.png]]
+=======
+![Before][figure 3] | ![After][figure 4]
+>>>>>>> 415e325c2f7e85114736e73a150b337e8c1ec591
 
 ####Header File:
 1. Open add_button.h. The screenshots in the tutorial all use vim, but feel free to use whatever text editor or IDE you prefer.  
@@ -37,7 +45,11 @@ Before | After
 
 Before | After
 :-----:|:-----:
+<<<<<<< HEAD
 [[/images/add_a_button/5_my_plugin_gui_h.png]] | [[/images/add_a_button/6_add_button_h.png]]
+=======
+![Before][figure 5] | ![After][figure 6]
+>>>>>>> 415e325c2f7e85114736e73a150b337e8c1ec591
 
 ####Source File:
 1. Open add_button.cpp.
@@ -62,14 +74,22 @@ Before | After
 
 Before | After
 :-----:|:-----:
+<<<<<<< HEAD
 [[/images/add_a_button/7_my_plugin_gui_cpp1.png]] | [[/images/add_a_button/8_add_button_cpp1.png]]
+=======
+![Before][figure 7] | ![After][figure 8]
+>>>>>>> 415e325c2f7e85114736e73a150b337e8c1ec591
 
 4.. Skip to the very bottom of the file and define the cBttn_event function. You can use whatever you like, but our main goals is to simply create a button. Therefore, the function definition can be left empty. This will result in button clicks not doing anything.  
    `void cBttn_event(void) {};`  
    
    cBttn_event will still be called whenever a click occurs. We simply have made it so each call to cBttn_event will not do anything.  
 
+<<<<<<< HEAD
 [[/images/add_a_button/9_add_button_cpp2.png]]
+=======
+![After][figure 9]
+>>>>>>> 415e325c2f7e85114736e73a150b337e8c1ec591
 
 5.. Save changes and close the file.  
 
@@ -79,7 +99,11 @@ Before | After
    
    This will compile and install the software. If a compilation error occurs, check the source files for types. This is a simple plugin, so complex errors are not to be expected.  
 
+<<<<<<< HEAD
 [[/images/add_a_button/10_compilation.png]]
+=======
+![Compilation][figure 10]
+>>>>>>> 415e325c2f7e85114736e73a150b337e8c1ec591
 
 ####Running in RTXI:
 1. Open RTXI.  
@@ -88,7 +112,26 @@ Before | After
 4. Select your module from the list of available ones. It will be named "add_button.so".
 5. View the new button.
 
+<<<<<<< HEAD
 [[/images/add_a_button/11_module_in_rtxi.png]]
 
 ####Concluding Remarks:
 This completes the button-adding tutorial. Granted, there are many options to explore that have not been explained or addressed. Development for RTXI is ongoing, and user feedback on this tutorial and/or suggestions for future ones is greatly appreciated and will be addressed with due speed.
+=======
+![Finished Module][figure 11]
+
+####Concluding Remarks:
+This completes the button-adding tutorial. Granted, there are many options to explore that have not been explained or addressed. Development for RTXI is ongoing, and user feedback on this tutorial and/or suggestions for future ones is greatly appreciated and will be addressed with due speed.
+
+[figure 1]: https://raw2.github.com/RTXI/tutorials/master/images/add_a_button/1_module_before.png
+[figure 2]: https://raw2.github.com/RTXI/tutorials/master/images/add_a_button/2_module_after.png
+[figure 3]: https://raw2.github.com/RTXI/tutorials/master/images/add_a_button/3_makefile_before_sed.png
+[figure 4]: https://raw2.github.com/RTXI/tutorials/master/images/add_a_button/4_makefile_after_sed.png
+[figure 5]: https://raw2.github.com/RTXI/tutorials/master/images/add_a_button/5_my_plugin_gui_h.png
+[figure 6]: https://raw2.github.com/RTXI/tutorials/master/images/add_a_button/6_add_button_h.png
+[figure 7]: https://raw2.github.com/RTXI/tutorials/master/images/add_a_button/7_my_plugin_gui_cpp1.png
+[figure 8]: https://raw2.github.com/RTXI/tutorials/master/images/add_a_button/8_add_button_cpp1.png
+[figure 9]: https://raw2.github.com/RTXI/tutorials/master/images/add_a_button/9_add_button_cpp2.png
+[figure 10]: https://raw2.github.com/RTXI/tutorials/master/images/add_a_button/10_compilation.png
+[figure 11]: https://raw2.github.com/RTXI/tutorials/master/images/add_a_button/11_module_in_rtxi.png
+>>>>>>> 415e325c2f7e85114736e73a150b337e8c1ec591
